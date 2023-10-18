@@ -1,6 +1,5 @@
 #include "s21_decimal.h"
 
-// // errokele
 
 void set_sign(int sign, s21_decimal *bit) {
   if (sign) {
