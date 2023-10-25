@@ -766,7 +766,7 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result_tmp) {
     }
     int c_flag = 0;
     int i = 0;
-    int suka = 0;
+    int tmp_cos = 0;
     int scale = 0;
     int scale_sum = 0;
 
@@ -787,12 +787,12 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result_tmp) {
             tmp = value_2_;
 
             if (c_flag) {
-              if (suka) {
+              if tmp_cos {
                 for (int j = 0; j < scale; j++) {
                   count_tmp = s21_add_core(shift(count_tmp, 1),
                                            shift(count_tmp, 3), result);
                   scale_sum++;
-                  suka = 0;
+                  tmp_cos = 0;
                 }
                 scale = 0;
               }
@@ -811,7 +811,7 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result_tmp) {
                                        shift(value_1_tmp, 3), result);
             scale++;
 
-            suka = 1;
+            tmp_cos = 1;
             i++;
             if (i < 28) {
               continue;
